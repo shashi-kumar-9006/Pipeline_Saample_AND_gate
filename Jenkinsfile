@@ -6,19 +6,19 @@ pipeline {
    }
     stages {
         stage('Simulate Model') {
-            steps {
-                script {
-                    try {
-                        sh """
-                            ${MATLAB_ROOT}/bin/matlab -nodisplay -nosplash -r "cd('${WORKSPACE}'); load_system('and_gate_model'); sim('and_gate_model');"
-                            echo "Model simulation successful"
-                        """
-                    } catch (exc) {
-                        echo "Model simulation failed: ${exc}"
-                    }
-                }
+    steps {
+        script {
+            try {
+                bat """
+                    "${PATH}" -nodisplay -nosplash -r "cd('${WORKSPACE}'); load_system('and_gate_model'); sim('and_gate_model');"
+                    echo Model simulation successful
+                """
+            } catch (exc) {
+                echo "Model simulation failed: ${exc}"
             }
         }
+    }
+}
     }
 }
 
