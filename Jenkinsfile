@@ -9,13 +9,12 @@ pipeline {
             steps {
                runMATLABCommand(command: 'disp("Hello World!")')
             }       
-        }                
-    }
-   stages {
-        stage('Run MATLAB Build') {
+        }
+       stage('Run MATLAB Build') {
             steps {
                 runMATLABBuild()
-            }       
-        }                
+            }                       
+       }
     }
+        
 }
