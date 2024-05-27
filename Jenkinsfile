@@ -5,10 +5,19 @@ pipeline {
        PATH = "C:\\Program Files\\MATLAB\\R2023b\\bin;${PATH}"   // Windows agent
    }
     stages {
-        stage('Run MATLAB Command') {
+        stage('Simulate Model') {
             steps {
-               runMATLABCommand(command: 'disp("Hello World!")')
-            }       
-        }                
-    } 
+                script {
+                    try {
+                        sh """
+                            ${MATLAB_ROOT}/bin/matlab -nodisplay -nosplash -r "cd('${WORKSPACE}'); load_system('and_gate_model'); sim('and_gate_model');"
+                            echo "Model simulation successful"
+                        """
+                    } catch (exc) {
+                        echo "Model simulation failed: ${exc}"
+                    }
+                }
+            }
+        }
+    }
 }
