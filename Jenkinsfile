@@ -10,11 +10,12 @@ pipeline {
                runMATLABCommand(command: 'disp("Hello World!")')
             }       
         }
-       stage('Run MATLAB Build') {
+       stage('Run MATLAB Tests') {
             steps {
-                runMATLABBuild()
-            }                       
-       }
+                runMATLABTests(testResultsJUnit: 'test-results/results.xml',
+                               codeCoverageCobertura: 'code-coverage/coverage.xml',
+            }       
+        }  
     }
         
 }
