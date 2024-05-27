@@ -13,9 +13,9 @@ pipeline {
        stage('Run MATLAB Tests') {
             steps {
                 runMATLABTests(testResultsJUnit: 'test-results/results.xml',
-                               codeCoverageCobertura: 'code-coverage/coverage.xml',
+                               codeCoverageCobertura: 'code-coverage/coverage.xml')
             }       
         }  
     }
-                               } 
+   } 
 }
