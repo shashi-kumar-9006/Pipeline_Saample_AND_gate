@@ -1,48 +1,26 @@
-// // Declarative Pipeline
-// pipeline {
-//    agent any
-//    environment {
-//        PATH = "C:\\Program Files\\MATLAB\\R2023b\\bin;${PATH}"   // Windows agent
-//    }
-//     stages {
-//         stage('Simulate Model') {
-//             steps {
-//                 script {
-//                     try {
-//                         sh """
-//                             ${PATH}/bin/matlab; load_system('and_gate_model'); sim('and_gate_model');"
-//                             echo "Model simulation successful"
-//                         """
-//                     } catch (exc) {
-//                         echo "Model simulation failed: ${exc}"
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
+// Declarative Pipeline
 pipeline {
-    agent any
-
-    environment {
-        MATLAB_ROOT = 'C:\\Program Files\\MATLAB\\R2023b'
-    }
-
+   agent any
+   environment {
+       PATH = "C:\\Program Files\\MATLAB\\R2023b\\bin;${PATH}"   // Windows agent
+   }
     stages {
         stage('Simulate Model') {
             steps {
                 script {
+                    // Step 1: Run and gate model simulation
                     try {
-                        bat """
-                            call "${MATLAB_ROOT}\\bin\\matlab.bat" -nodesktop -nosplash -r "load_system('and_gate_model'); sim('and_gate_model'); exit;"
-                            echo "Model simulation successful"
-                        """
-                    } catch (exc) {
-                        echo "Model simulation failed: ${exc}"
+                        // Run simulation code here
+                        bat 'matlab -r "run_simulation(\'and_gate_model.slx\')"'
+                        // Custom try block comment
+                        echo 'Simulation ran successfully.'
+                    } catch (Exception e) {
+                        // Custom catch block comment
+                        echo 'Simulation failed.'
                     }
                 }
             }
         }
     }
 }
+
