@@ -10,18 +10,6 @@ pipeline {
                runMATLABCommand(command: 'disp("Hello World!")')
             }       
         }
-       stage('Check Model Simulation') {
-            steps {
-                script {
-                    def modelSimulated = runMATLABCommand(command: 'simulated = bdIsLoaded("and_gate_model.slx"); disp(simulated);', returnStdout: true).trim()
-                    if (modelSimulated == 'true') {
-                        echo 'The "and_gate_model.slx" model is being simulated.'
-                    } else {
-                        echo 'The "and_gate_model.slx" model is not being simulated.'
-                    }
-                }
-            }
-        }
        stage('Run MATLAB Tests') {
             steps {
                 runMATLABTests(testResultsJUnit: 'test-results/results.xml',
