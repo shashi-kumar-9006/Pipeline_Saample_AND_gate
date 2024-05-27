@@ -10,7 +10,7 @@ pipeline {
                 script {
                     try {
                         sh """
-                            ${PATH}/bin/matlab -nodisplay -nosplash -r "cd('${WORKSPACE}'); load_system('and_gate_model'); sim('and_gate_model');"
+                            ${PATH}/bin/matlab; load_system('and_gate_model'); sim('and_gate_model');"
                             echo "Model simulation successful"
                         """
                     } catch (exc) {
