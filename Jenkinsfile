@@ -64,7 +64,7 @@ pipeline {
 
     environment {
         MATLAB_ROOT = "/path/to/MATLAB/R2023b"  // Replace with the actual path to your MATLAB installation
-        GIT_REPO_URL = "https://github.com/your-username/your-repo.git"  // Replace with the URL of your GitHub repository
+        GIT_REPO_URL = "https://github.com/shashi-kumar-9006/harsh-test/"  // Replace with the URL of your GitHub repository
     }
 
     stages {
