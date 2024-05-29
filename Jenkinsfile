@@ -5,7 +5,7 @@ pipeline {
        PATH = "C:\\Program Files\\MATLAB\\R2023b\\bin;${PATH}"   // Windows agent 
    }
     stages {
-        stage('Run MATLAB Command') {
+        stage('Run MATLAB Command1') {
             steps {
                runMATLABCommand(command: 'disp("Hello World!")')
             }       
@@ -17,7 +17,7 @@ pipeline {
                                  testResultsPDF: 'test-results/testreport.pdf')
             }
         }
-       stage('Run MATLAB Command') {
+       stage('Run MATLAB Command2') {
             steps {
                 runMATLABCommand(command: 'simulation_check')
             }       
