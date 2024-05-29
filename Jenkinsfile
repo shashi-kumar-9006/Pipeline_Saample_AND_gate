@@ -26,7 +26,12 @@ pipeline {
             steps {
                 runMATLABCommand(command: 'jmaab_check')
             }       
-        } 
+        }
+       stage('Run MATLAB Command4') {
+            steps {
+                runMATLABCommand(command: 'code_generation')
+            }       
+        }
     }
    } 
 
