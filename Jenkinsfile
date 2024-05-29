@@ -21,6 +21,11 @@ pipeline {
             steps {
                 runMATLABCommand(command: 'simulation_check')
             }       
+        }
+       stage('Run MATLAB Comman32') {
+            steps {
+                runMATLABCommand(command: 'jmaab_check')
+            }       
         } 
     }
    } 
