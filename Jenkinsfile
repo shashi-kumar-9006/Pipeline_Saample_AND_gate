@@ -15,8 +15,13 @@ pipeline {
                 runMATLABTests(testResultsJUnit: 'test-results/results.xml',
                                codeCoverageCobertura: 'code-coverage/coverage.xml', 
                                  testResultsPDF: 'test-results/testreport.pdf')
+            }
+        }
+       stage('Run MATLAB Command') {
+            steps {
+                runMATLABCommand(command: 'simulation_check')
             }       
-        }  
+        } 
     }
    } 
 
